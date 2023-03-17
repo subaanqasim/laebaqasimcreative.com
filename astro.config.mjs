@@ -1,3 +1,4 @@
+import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import sanity from "astro-sanity";
@@ -15,5 +16,6 @@ export default defineConfig({
       apiVersion: "2021-03-25",
       useCdn: true,
     }),
+    preact({ compat: true }),
   ],
 });
