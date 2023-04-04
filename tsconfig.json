@@ -6,11 +6,14 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
       "@public/*": [
         "public/*"
       ]
     },
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "react"
   }
 }
