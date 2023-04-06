@@ -32,14 +32,47 @@ const buttonVariants = cva(
   },
 );
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+type AsProp<C extends React.ElementType> = {
+  as?: C;
+};
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
+type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
+
+type PolymorphicProps<
+  C extends React.ElementType,
+  CustomProps = object,
+> = React.PropsWithChildren<CustomProps & AsProp<C>> &
+  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, CustomProps>>;
+
+type PolymorphicRef<C extends React.ElementType> =
+  React.ComponentPropsWithRef<C>["ref"];
+
+type PolymorphicPropsWithRef<
+  C extends React.ElementType,
+  Props = object,
+> = PolymorphicProps<C, Props> & { ref?: PolymorphicRef<C> };
+
+type ButtonVariantProps = VariantProps<typeof buttonVariants>;
+
+type ButtonProps<C extends React.ElementType> = PolymorphicPropsWithRef<
+  C,
+  ButtonVariantProps
+>;
+
+type ButtonComponent = <C extends React.ElementType = "button">(
+  props: ButtonProps<C>,
+) => React.ReactElement | null;
+
+// eslint-disable-next-line react/display-name
+const Button: ButtonComponent = React.forwardRef(
+  <C extends React.ElementType = "button">(
+    { className, variant, size, as, ...props }: ButtonProps<C>,
+    ref?: PolymorphicRef<C>,
+  ) => {
+    const Component = as || "button";
+
     return (
-      <button
+      <Component
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
@@ -47,6 +80,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
-Button.displayName = "Button";
 
 export { Button, buttonVariants };
