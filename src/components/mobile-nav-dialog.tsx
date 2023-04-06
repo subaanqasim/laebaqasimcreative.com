@@ -1,0 +1,84 @@
+import { Bars3Icon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
+
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui";
+
+const navigation = [
+  { name: "Benefits", href: "#benefits" },
+  { name: "Recent Work", href: "#recent" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "FAQ", href: "#faq" },
+];
+
+export function MobileNavDialog() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <Button variant="ghost">
+        <Bars3Icon className="w-6 h-6" />
+      </Button>
+    );
+  }
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild className="lg:hidden">
+        <Button variant="ghost">
+          <Bars3Icon className="w-6 h-6" />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle className="sr-only">Edit profile</DialogTitle>
+        </DialogHeader>
+        <div className="flex items-center justify-between">
+          <a href="#" className="-m-1.5 p-1.5">
+            <span className="sr-only">Laeba Qasim Creative</span>
+            <img
+              className="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=emerald&shade=600"
+              alt=""
+            />
+          </a>
+        </div>
+
+        <div className="mt-6 flow-root">
+          <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="space-y-2 py-6">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900  hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-800"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+            <div className="py-6">
+              <a
+                href="#"
+                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+              >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}

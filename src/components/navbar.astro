@@ -1,0 +1,62 @@
+---
+import { MobileNavDialog } from "./mobile-nav-dialog";
+import ThemeToggle from "./theme-toggle.astro";
+
+const navigation = [
+  { name: "Benefits", href: "#benefits" },
+  { name: "Recent Work", href: "#recent" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "FAQ", href: "#faq" },
+];
+---
+
+<nav
+  class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+  aria-label="Global"
+>
+  <div class="flex flex-1">
+    <a href="#" class="-m-1.5 p-1.5">
+      <span class="sr-only">Laeba Qasim Creative</span>
+      <img
+        class="h-8 w-auto"
+        src="https://tailwindui.com/img/logos/mark.svg?color=emerald&shade=600"
+        alt=""
+      />
+    </a>
+  </div>
+
+  <div class="lg:hidden">
+    <ThemeToggle />
+  </div>
+
+  <div class="flex lg:hidden">
+    <MobileNavDialog client:load />
+  </div>
+
+  <div class="hidden lg:flex lg:gap-x-12">
+    {
+      navigation.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100"
+        >
+          {item.name}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="hidden items-center lg:flex lg:flex-1 lg:justify-end">
+    <div class="mr-2 hidden lg:block">
+      <ThemeToggle />
+    </div>
+
+    <a
+      href="/login"
+      class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100"
+    >
+      Log in <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</nav>

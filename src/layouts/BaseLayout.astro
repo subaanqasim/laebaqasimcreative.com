@@ -1,7 +1,8 @@
 ---
-import "@fontsource/work-sans/variable.css"
-import "@fontsource/work-sans/variable-italic.css"
+import "@fontsource/work-sans/variable.css";
+import "@fontsource/work-sans/variable-italic.css";
 
+import Navbar from "@components/navbar.astro";
 
 export interface Props {
   title: string;
@@ -15,12 +16,36 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="sitemap" href="/sitemap-index.xml">
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("lqc-theme")
+        ) {
+          return localStorage.getItem("lqc-theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "dark";
+      })();
+
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+      } else {
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("dark");
+      }
+    </script>
   </head>
-  <body>
+
+  <body class="bg-gray-50 dark:bg-gray-950">
+    <Navbar />
     <slot />
   </body>
 </html>
-

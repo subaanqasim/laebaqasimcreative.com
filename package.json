@@ -17,6 +17,7 @@
     "@astrojs/tailwind": "3.1.1",
     "@fontsource/work-sans": "4.5.14",
     "@heroicons/react": "2.0.17",
+    "@radix-ui/react-dialog": "1.0.3",
     "@radix-ui/react-navigation-menu": "^1.1.2",
     "@sanity/client": "5.4.2",
     "@types/react": "^18.0.21",
