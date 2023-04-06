@@ -1,4 +1,6 @@
 ---
+import { Container } from "@components/ui";
+
 import { MobileNavDialog } from "./mobile-nav-dialog";
 import ThemeToggle from "./theme-toggle.astro";
 
@@ -11,48 +13,47 @@ const navigation = [
 ];
 ---
 
-<nav
-  class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-  aria-label="Global"
->
-  <div class="flex flex-1">
-    <a href="#" class="-m-1.5 p-1.5">
-      <span class="sr-only">Laeba Qasim Creative</span>
-      <div class="h-8 w-8 rounded-full bg-gray-500"></div>
-    </a>
-  </div>
+<nav aria-label="Global">
+  <Container className="flex items-center py-6">
+    <div class="flex flex-1">
+      <a href="#" class="-m-1.5 p-1.5">
+        <span class="sr-only">Laeba Qasim Creative</span>
+        <div class="h-8 w-8 rounded-full bg-gray-500"></div>
+      </a>
+    </div>
 
-  <div class="lg:hidden">
-    <ThemeToggle />
-  </div>
-
-  <div class="flex lg:hidden">
-    <MobileNavDialog client:load />
-  </div>
-
-  <div class="hidden lg:flex lg:gap-x-12">
-    {
-      navigation.map((item) => (
-        <a
-          href={item.href}
-          class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100"
-        >
-          {item.name}
-        </a>
-      ))
-    }
-  </div>
-
-  <div class="hidden items-center lg:flex lg:flex-1 lg:justify-end">
-    <div class="mr-2 hidden lg:block">
+    <div class="lg:hidden">
       <ThemeToggle />
     </div>
 
-    <a
-      href="/login"
-      class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100"
-    >
-      Log in <span aria-hidden="true">&rarr;</span>
-    </a>
-  </div>
+    <div class="flex lg:hidden">
+      <MobileNavDialog client:load />
+    </div>
+
+    <div class="hidden lg:flex lg:gap-x-12">
+      {
+        navigation.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100"
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="hidden items-center lg:flex lg:flex-1 lg:justify-end">
+      <div class="mr-2 hidden lg:block">
+        <ThemeToggle />
+      </div>
+
+      <a
+        href="/login"
+        class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100"
+      >
+        Log in <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </Container>
 </nav>
