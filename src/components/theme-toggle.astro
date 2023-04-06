@@ -4,7 +4,7 @@ import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { Button } from "./ui";
 ---
 
-<Button id="theme-toggle" variant="ghost">
+<Button name="theme-toggle" variant="ghost">
   <MoonIcon
     className="h-5 w-5 text-gray-900 dark:text-transparent block dark:hidden"
   />
@@ -16,30 +16,35 @@ import { Button } from "./ui";
 <script>
   const html = document.documentElement;
 
-  const themeToggle = document.querySelector("button#theme-toggle");
+  const themeToggles = document.querySelectorAll("button[name='theme-toggle']");
 
   const getMessage = () => {
     const theme = html.classList.contains("dark") ? "light" : "dark";
     return `Use ${theme} mode`;
   };
 
-  themeToggle!.setAttribute("title", getMessage());
-  themeToggle!.setAttribute("aria-label", getMessage());
-  themeToggle!.setAttribute(
-    "value",
-    html.classList.contains("dark") ? "dark" : "light",
-  );
-
   const toggleTheme = (theme: "light" | "dark") => {
     localStorage.setItem("lqc-theme", theme);
     html.classList.add(theme === "dark" ? "dark" : "light");
     html.classList.remove(theme === "dark" ? "light" : "dark");
-    themeToggle!.setAttribute("title", getMessage());
-    themeToggle!.setAttribute("aria-label", getMessage());
-    themeToggle!.setAttribute("value", theme);
+
+    themeToggles.forEach((toggle) => {
+      toggle!.setAttribute("title", getMessage());
+      toggle!.setAttribute("aria-label", getMessage());
+      toggle!.setAttribute("value", theme);
+    });
   };
 
-  themeToggle!.addEventListener("click", () => {
-    toggleTheme(html.classList.contains("dark") ? "light" : "dark");
+  themeToggles.forEach((toggle) => {
+    toggle!.setAttribute("title", getMessage());
+    toggle!.setAttribute("aria-label", getMessage());
+    toggle!.setAttribute(
+      "value",
+      html.classList.contains("dark") ? "dark" : "light",
+    );
+
+    toggle!.addEventListener("click", () => {
+      toggleTheme(html.classList.contains("dark") ? "light" : "dark");
+    });
   });
 </script>
