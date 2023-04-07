@@ -47,11 +47,7 @@ export function MobileNavDialog() {
         <div className="flex items-center justify-between">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Laeba Qasim Creative</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=emerald&shade=600"
-              alt=""
-            />
+            <div className="h-8 w-8 rounded-full bg-gray-500" />
           </a>
         </div>
 
@@ -62,7 +58,7 @@ export function MobileNavDialog() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900  hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-800"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900  hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-800"
                 >
                   {item.name}
                 </a>
@@ -71,7 +67,7 @@ export function MobileNavDialog() {
             <div className="py-6">
               <a
                 href="#"
-                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-medium leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
                 Log in <span aria-hidden="true">&rarr;</span>
               </a>
