@@ -76,6 +76,11 @@ const navigation = [
   ];
 
   if (navbar && heroSection) {
+    if (window.scrollY > 80) {
+      navbar.classList.remove(...base);
+      navbar.classList.add(...styles);
+    }
+
     inView(
       heroSection,
       () => {
@@ -83,8 +88,12 @@ const navigation = [
         navbar.classList.add(...styles);
 
         return () => {
-          navbar.classList.remove(...styles);
-          navbar.classList.add(...base);
+          if (window.scrollY > 80) {
+            return;
+          } else {
+            navbar.classList.remove(...styles);
+            navbar.classList.add(...base);
+          }
         };
       },
       { margin: `0px 0px -${window.innerHeight - 64}px 0px` },
