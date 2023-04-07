@@ -27,7 +27,7 @@ export function MobileNavDialog() {
 
   if (!isMounted) {
     return (
-      <Button variant="ghost" className="-mr-4">
+      <Button variant="ghost" className="-mr-2" size="sm">
         <Bars3Icon className="w-6 h-6" />
       </Button>
     );
@@ -35,8 +35,8 @@ export function MobileNavDialog() {
 
   return (
     <Dialog>
-      <DialogTrigger asChild className="lg:hidden -mr-4">
-        <Button variant="ghost">
+      <DialogTrigger asChild className="lg:hidden -mr-2">
+        <Button variant="ghost" size="sm">
           <Bars3Icon className="w-6 h-6" />
         </Button>
       </DialogTrigger>
