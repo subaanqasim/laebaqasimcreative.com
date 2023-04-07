@@ -15,7 +15,7 @@ const navigation = [
 
 <nav
   aria-label="Global"
-  class="fixed left-0 right-0 top-0 z-50 flex h-16 w-full border-b border-gray-950/5 bg-gray-50/50 backdrop-blur dark:border-gray-50/5 dark:bg-gray-950/50"
+  class="fixed left-0 right-0 top-0 z-50 flex h-16 w-full border-b border-transparent bg-transparent backdrop-blur transition-all duration-300"
 >
   <Container className="flex items-center grow">
     <div class="flex flex-1">
@@ -60,3 +60,34 @@ const navigation = [
     </div>
   </Container>
 </nav>
+
+<script>
+  import { inView } from "motion";
+
+  const navbar = document.querySelector("nav");
+  const heroSection = document.getElementById("hero");
+
+  const base = ["border-transparent", "bg-transparent"];
+  const styles = [
+    "border-black/5",
+    "dark:border-white/5",
+    "bg-gray-50/60",
+    "dark:bg-gray-950/60",
+  ];
+
+  if (navbar && heroSection) {
+    inView(
+      heroSection,
+      () => {
+        navbar.classList.remove(...base);
+        navbar.classList.add(...styles);
+
+        return () => {
+          navbar.classList.remove(...styles);
+          navbar.classList.add(...base);
+        };
+      },
+      { margin: `0px 0px -${window.innerHeight - 64}px 0px` },
+    );
+  }
+</script>
