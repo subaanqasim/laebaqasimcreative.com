@@ -19,7 +19,7 @@ import Layout from "../layouts/BaseLayout.astro";
 </Layout>
 
 <script>
-  import { animate, inView, stagger } from "motion";
+  import { animate, inView, scroll, stagger } from "motion";
 
   const navbar = document.querySelector("nav");
   const heroText = document.querySelector("#hero-text");
@@ -55,7 +55,7 @@ import Layout from "../layouts/BaseLayout.astro";
     heroImages!,
     ({ target }) => {
       animate(
-        target.querySelectorAll("img"),
+        target.querySelectorAll("div.relative"),
         {
           transform: ["translateX(100%)", "none"],
           opacity: [0, 1],
@@ -66,4 +66,8 @@ import Layout from "../layouts/BaseLayout.astro";
     },
     inViewOpts,
   );
+
+  scroll(animate(heroImages!, { transform: ["none", "translateX(-100%)"] }), {
+    offset: ["0vh", "100vh"],
+  });
 </script>
