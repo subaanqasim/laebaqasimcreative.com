@@ -17,3 +17,53 @@ import Layout from "../layouts/BaseLayout.astro";
     <FAQs />
   </main>
 </Layout>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const navbar = document.querySelector("nav");
+  const heroText = document.querySelector("#hero-text");
+  const heroImages = document.querySelector("#hero-images");
+
+  const duration = 0.85;
+  const easing = [0, 0.25, 0.1, 1] as const;
+  const animateOpts = { duration, easing };
+  const inViewOpts = { margin: "0px 0px -200px 0px" };
+
+  // animate navbar
+  animate(navbar!, { transform: ["translateY(-100%)", "none"] }, animateOpts);
+
+  // animate hero section text and CTA
+  inView(
+    heroText!,
+    ({ target }) => {
+      animate(
+        [...target.children],
+        {
+          transform: ["translateY(100px)", "none"],
+          opacity: [0, 1],
+          filter: ["blur(4px)", "blur(0px)"],
+        },
+        { ...animateOpts, delay: stagger(0.1) },
+      );
+    },
+    inViewOpts,
+  );
+
+  // animate hero section images
+  inView(
+    heroImages!,
+    ({ target }) => {
+      animate(
+        target.querySelectorAll("img"),
+        {
+          transform: ["translateX(100%)", "none"],
+          opacity: [0, 1],
+          filter: ["blur(8px)", "blur(0px)"],
+        },
+        { ...animateOpts, delay: stagger(0.1) },
+      );
+    },
+    inViewOpts,
+  );
+</script>
