@@ -5,11 +5,11 @@ import { MobileNavDialog } from "./mobile-nav-dialog";
 import ThemeToggle from "./theme-toggle.astro";
 
 const navigation = [
-  { name: "Benefits", href: "#benefits" },
-  { name: "Recent Work", href: "#recent" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Benefits", href: "/#benefits" },
+  { name: "Recent Work", href: "/#recent-work" },
+  { name: "Pricing", href: "/#pricing" },
+  { name: "FAQ", href: "/#faq" },
   { name: "Portfolio", href: "/portfolio" },
-  { name: "FAQ", href: "#faq" },
 ];
 ---
 
@@ -19,7 +19,7 @@ const navigation = [
 >
   <Container className="flex items-center grow">
     <div class="flex flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
+      <a href="/#home" class="-m-1.5 p-1.5">
         <span class="sr-only">Laeba Qasim Creative</span>
         <div class="h-8 w-8 rounded-full bg-gray-500"></div>
       </a>
@@ -30,7 +30,7 @@ const navigation = [
     </div>
 
     <div class="flex lg:hidden">
-      <MobileNavDialog client:load />
+      <MobileNavDialog client:load navigation={navigation} />
     </div>
 
     <div class="hidden lg:flex lg:gap-x-12">

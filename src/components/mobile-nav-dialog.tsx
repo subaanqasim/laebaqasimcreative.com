@@ -10,15 +10,11 @@ import {
   DialogTrigger,
 } from "./ui";
 
-const navigation = [
-  { name: "Benefits", href: "#benefits" },
-  { name: "Recent Work", href: "#recent" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "FAQ", href: "#faq" },
-];
+type MobileNavDialogProps = {
+  navigation: { name: string; href: string }[];
+};
 
-export function MobileNavDialog() {
+export function MobileNavDialog({ navigation }: MobileNavDialogProps) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -45,7 +41,7 @@ export function MobileNavDialog() {
           <DialogTitle className="sr-only">Edit profile</DialogTitle>
         </DialogHeader>
         <div className="flex items-center justify-between">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/#home" className="-m-1.5 p-1.5">
             <span className="sr-only">Laeba Qasim Creative</span>
             <div className="h-8 w-8 rounded-full bg-gray-500" />
           </a>
