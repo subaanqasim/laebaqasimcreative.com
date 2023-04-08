@@ -1,0 +1,36 @@
+---
+import { Container } from "@components/ui";
+
+import { FaqList } from "./faq-list";
+
+const faqs = [
+  {
+    question: "What's the best thing about Switzerland?",
+    answer:
+      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+  },
+  {
+    question: "What do you call someone with no body and no nose?",
+    answer:
+      "Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+  },
+  {
+    question: "Why do you never see elephants hiding in trees?",
+    answer:
+      "Because they're so good at it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+  },
+  // More questions...
+];
+---
+
+<Container className="py-24 sm:py-32 lg:py-40">
+  <h2
+    class="mt-2 text-center text-4xl font-bold tracking-tight text-gray-950 dark:text-gray-50 sm:text-5xl"
+  >
+    FAQs
+  </h2>
+
+  <div class="mx-auto mt-16 max-w-3xl">
+    <FaqList faqs={faqs} client:idle />
+  </div>
+</Container>
