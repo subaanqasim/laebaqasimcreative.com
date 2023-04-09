@@ -1,6 +1,7 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
+import { Logo } from "./logo";
 import {
   Button,
   Dialog,
@@ -43,7 +44,8 @@ export function MobileNavDialog({ navigation }: MobileNavDialogProps) {
         <div className="flex items-center justify-between">
           <a href="/#home" className="-m-1.5 p-1.5">
             <span className="sr-only">Laeba Qasim Creative</span>
-            <div className="h-8 w-8 rounded-full bg-gray-500" />
+            {/* <img className="h-[34px] w-auto" src={logo} alt="" /> */}
+            <Logo className="h-[34px] w-auto fill-amber-600" />
           </a>
         </div>
 

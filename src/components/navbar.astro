@@ -1,6 +1,8 @@
 ---
+import { Image } from "@astrojs/image/components";
 import { Container } from "@components/ui";
 
+import logo from "../../public/lqc-logo.svg";
 import { MobileNavDialog } from "./mobile-nav-dialog";
 import ThemeToggle from "./theme-toggle.astro";
 
@@ -21,7 +23,14 @@ const navigation = [
     <div class="flex flex-1">
       <a href="/#home" class="-m-1.5 p-1.5">
         <span class="sr-only">Laeba Qasim Creative</span>
-        <div class="h-8 w-8 rounded-full bg-gray-500"></div>
+        <Image
+          class="h-[34px] w-auto"
+          src={logo}
+          format="svg"
+          width={32}
+          alt=""
+          loading="eager"
+        />
       </a>
     </div>
 
