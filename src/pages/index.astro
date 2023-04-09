@@ -3,7 +3,7 @@ import BenefitsSection from "@components/landing-page/benefits.astro";
 import ExplainerSection from "@components/landing-page/explainer.astro";
 import FAQs from "@components/landing-page/faqs/faqs.astro";
 import HeroSection from "@components/landing-page/hero.astro";
-import PricingSection from "@components/landing-page/pricing.astro";
+import { PricingSection } from "@components/landing-page/pricing";
 
 import Layout from "../layouts/BaseLayout.astro";
 
@@ -15,7 +15,7 @@ export const prerender = true;
     <HeroSection />
     <ExplainerSection />
     <BenefitsSection />
-    <PricingSection />
+    <PricingSection client:idle />
     <FAQs />
   </main>
 </Layout>
@@ -105,6 +105,7 @@ export const prerender = true;
 
   const pricingText = document.querySelector("#pricing-text");
   const pricingTiers = document.querySelector("#pricing-tiers");
+  const pricingPeriods = document.querySelector("#pricing-periods");
 
   const faqTitle = document.querySelector("#faq-title");
   const faqList = document.querySelector("#faq-list");
@@ -120,6 +121,7 @@ export const prerender = true;
       ...benefitsList!.children,
       ...pricingText!.children,
       ...pricingTiers!.children,
+      pricingPeriods!,
       faqTitle!,
       faqList!,
     ],
