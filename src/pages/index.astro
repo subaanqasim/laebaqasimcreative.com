@@ -67,12 +67,31 @@ import Layout from "../layouts/BaseLayout.astro";
     inViewOpts,
   );
 
-  scroll(animate(heroImages!, { transform: ["none", "translateX(-100%)"] }), {
-    offset: ["0vh", "100vh"],
-  });
+  function translateHeroImagesOnScroll(
+    query: MediaQueryList | MediaQueryListEvent,
+  ) {
+    if (query.matches) {
+      scroll(
+        animate(heroImages!, { transform: ["none", "translateX(100%)"] }),
+        {
+          offset: ["0vh", "140vh"],
+        },
+      );
+    } else {
+      scroll(
+        animate(heroImages!, { transform: ["none", "translateX(-100%)"] }),
+        {
+          offset: ["0vh", "120vh"],
+        },
+      );
+    }
+  }
 
-  // aniamte rest of page
+  const mobileQuery = window.matchMedia("(max-width: 640px)");
+  mobileQuery.addEventListener("change", translateHeroImagesOnScroll);
+  translateHeroImagesOnScroll(mobileQuery);
 
+  // animate rest of page
   const explainerText1 = document.querySelector("#explainer-text-1");
   const explainerText2 = document.querySelector("#explainer-text-2");
   const explainerSteps1 = document.querySelector("#explainer-steps-1");

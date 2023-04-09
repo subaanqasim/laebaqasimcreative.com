@@ -2,9 +2,15 @@
 import { Button, Container } from "@components/ui";
 ---
 
-<div class="relative isolate pt-8" id="home">
+<div class="relative pt-8" id="home">
   <div
-    class="absolute left-1/2 right-0 top-0 -z-10 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48"
+    aria-hidden="true"
+    class="absolute inset-0 z-10 bg-transparent sm:bg-[linear-gradient(90deg,rgba(250,250,250,1)40%,rgba(250,250,250,0)75%)] sm:dark:bg-[linear-gradient(90deg,rgba(10,10,10,1)40%,rgba(10,10,10,0)75%)]"
+  >
+  </div>
+
+  <div
+    class="absolute left-1/2 right-0 top-0 z-10 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48"
     aria-hidden="true"
   >
     <div
@@ -17,10 +23,13 @@ import { Button, Container } from "@components/ui";
   <div class="overflow-hidden">
     <Container className="pb-32 pt-24 lg:pt-28">
       <div
-        class="mx-auto max-w-2xl gap-x-14 bg-[linear-gradient(90deg,rgba(250,250,250,1)40%,rgba(250,250,250,0)75%)] dark:bg-[linear-gradient(90deg,rgba(10,10,0,1)40%,rgba(10,10,0,0)75%)] lg:mx-0 lg:flex lg:max-w-none lg:items-center"
+        class="relative mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center"
         id="hero"
       >
-        <div id="hero-text" class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
+        <div
+          id="hero-text"
+          class="relative z-10 w-full max-w-xl lg:shrink-0 xl:max-w-2xl"
+        >
           <a href="#" class="inline-flex space-x-6">
             <span
               class="rounded-full bg-amber-600/10 px-3 py-1 text-sm font-semibold leading-6 text-amber-600 ring-1 ring-inset ring-amber-600/10 dark:bg-amber-500/10 dark:text-amber-400 dark:ring-amber-500/20"
@@ -51,8 +60,11 @@ import { Button, Container } from "@components/ui";
           <p
             class="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300 lg:text-xl"
           >
-            Custom photography without the hassle which scales with your needs.
-            Unlimited requests, constant delivery, simple fees.
+            Custom photography without the hassle which scales <br
+              class="hidden sm:block lg:hidden"
+            /> with your needs. Unlimited requests, constant delivery,<br
+              class="hidden sm:block lg:hidden"
+            /> simple fees.
           </p>
           <div class="mt-10 flex items-center gap-x-6">
             <Button
@@ -95,6 +107,7 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
           </div>
+
           <div
             class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
           >
@@ -121,6 +134,7 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
           </div>
+
           <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
             <div class="relative">
               <img
@@ -136,6 +150,137 @@ import { Button, Container } from "@components/ui";
             <div class="relative">
               <img
                 src="/images/victoria-sponge.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+          >
+            <div class="relative">
+              <img
+                src="/images/figs-2.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <img
+                src="/images/pesto-pasta.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+            <div class="relative">
+              <img
+                src="/images/seabass.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <img
+                src="/images/tomato.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+          >
+            <div class="relative">
+              <img
+                src="/images/tomatoes.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <img
+                src="/images/victoria-sponge-2.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+            <div class="relative">
+              <img
+                src="/images/white-drink-with-flowers.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <img
+                src="/images/victoria-sponge.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+          >
+            <div class="relative">
+              <img
+                src="/images/camembert.jpg"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <img
+                src="/images/french-toast.jpg"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
