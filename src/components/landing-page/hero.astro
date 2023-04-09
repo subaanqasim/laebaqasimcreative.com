@@ -1,5 +1,19 @@
 ---
+import { Image } from "@astrojs/image/components";
 import { Button, Container } from "@components/ui";
+
+import camembertImg from "../../../public/images/camembert.jpg";
+import figsImg2 from "../../../public/images/figs-2.jpg";
+import figsImg from "../../../public/images/figs.jpg";
+import frenchToastImg from "../../../public/images/french-toast.jpg";
+import pestoPastaImg from "../../../public/images/pesto-pasta.jpg";
+import seabassImg from "../../../public/images/seabass.jpg";
+import tomatoImg from "../../../public/images/tomato.jpg";
+import tomatoesImg from "../../../public/images/tomatoes.jpg";
+import victoriaSpongeImg2 from "../../../public/images/victoria-sponge-2.jpg";
+import victoriaSpongeImg from "../../../public/images/victoria-sponge.jpg";
+import whiteDrinkWithFlowersImg from "../../../public/images/white-drink-with-flowers.jpg";
+import whiteDrinkImg from "../../../public/images/white-drink.jpg";
 ---
 
 <div class="relative pt-8" id="home">
@@ -93,11 +107,13 @@ import { Button, Container } from "@components/ui";
           class="-z-10 mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0"
         >
           <div
-            class="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80"
+            class="ml-auto w-48 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80"
           >
             <div class="relative">
-              <img
-                src="/images/figs.jpg"
+              <Image
+                src={figsImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -109,11 +125,13 @@ import { Button, Container } from "@components/ui";
           </div>
 
           <div
-            class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
           >
             <div class="relative">
-              <img
-                src="/images/camembert.jpg"
+              <Image
+                src={camembertImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -123,8 +141,10 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
             <div class="relative">
-              <img
-                src="/images/french-toast.jpg"
+              <Image
+                src={frenchToastImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -135,10 +155,12 @@ import { Button, Container } from "@components/ui";
             </div>
           </div>
 
-          <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+          <div class="w-48 flex-none space-y-8 pt-32 sm:pt-0">
             <div class="relative">
-              <img
-                src="/images/white-drink.jpg"
+              <Image
+                src={whiteDrinkImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -148,8 +170,10 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
             <div class="relative">
-              <img
-                src="/images/victoria-sponge.jpg"
+              <Image
+                src={victoriaSpongeImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -161,11 +185,13 @@ import { Button, Container } from "@components/ui";
           </div>
 
           <div
-            class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
           >
             <div class="relative">
-              <img
-                src="/images/figs-2.jpg"
+              <Image
+                src={figsImg2}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -175,8 +201,10 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
             <div class="relative">
-              <img
-                src="/images/pesto-pasta.jpg"
+              <Image
+                src={pestoPastaImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -187,10 +215,12 @@ import { Button, Container } from "@components/ui";
             </div>
           </div>
 
-          <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+          <div class="w-48 flex-none space-y-8 pt-32 sm:pt-0">
             <div class="relative">
-              <img
-                src="/images/seabass.jpg"
+              <Image
+                src={seabassImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -200,8 +230,10 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
             <div class="relative">
-              <img
-                src="/images/tomato.jpg"
+              <Image
+                src={tomatoImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -213,11 +245,13 @@ import { Button, Container } from "@components/ui";
           </div>
 
           <div
-            class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
           >
             <div class="relative">
-              <img
-                src="/images/tomatoes.jpg"
+              <Image
+                src={tomatoesImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -227,8 +261,10 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
             <div class="relative">
-              <img
-                src="/images/victoria-sponge-2.jpg"
+              <Image
+                src={victoriaSpongeImg2}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -239,10 +275,12 @@ import { Button, Container } from "@components/ui";
             </div>
           </div>
 
-          <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+          <div class="w-48 flex-none space-y-8 pt-32 sm:pt-0">
             <div class="relative">
-              <img
-                src="/images/white-drink-with-flowers.jpg"
+              <Image
+                src={whiteDrinkWithFlowersImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -252,8 +290,10 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
             <div class="relative">
-              <img
-                src="/images/victoria-sponge.jpg"
+              <Image
+                src={victoriaSpongeImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -265,11 +305,13 @@ import { Button, Container } from "@components/ui";
           </div>
 
           <div
-            class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
           >
             <div class="relative">
-              <img
-                src="/images/camembert.jpg"
+              <Image
+                src={camembertImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
@@ -279,8 +321,10 @@ import { Button, Container } from "@components/ui";
               </div>
             </div>
             <div class="relative">
-              <img
-                src="/images/french-toast.jpg"
+              <Image
+                src={frenchToastImg}
+                loading="eager"
+                format="webp"
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
