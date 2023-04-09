@@ -46,7 +46,7 @@ const tiers = [
 
 <div id="pricing" class="py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl text-center">
+    <div id="pricing-text" class="mx-auto max-w-4xl text-center">
       <h2
         class="text-base font-semibold leading-7 text-amber-600 dark:text-amber-500"
       >
@@ -57,16 +57,17 @@ const tiers = [
       >
         Pricing plans for teams of&nbsp;all&nbsp;sizes
       </p>
+      <p
+        class="mx-auto mt-6 max-w-2xl text-center text-xl leading-8 text-gray-700 dark:text-gray-300"
+      >
+        Choose an affordable plan that’s packed with the best features for
+        engaging your audience, creating customer loyalty, and driving sales.
+      </p>
     </div>
-    <p
-      class="mx-auto mt-6 max-w-2xl text-center text-xl leading-8 text-gray-700 dark:text-gray-300"
-    >
-      Choose an affordable plan that’s packed with the best features for
-      engaging your audience, creating customer loyalty, and driving sales.
-    </p>
 
     <div
-      class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+      id="pricing-tiers"
+      class="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-8 sm:mt-20 md:mt-24 lg:mx-0 lg:max-w-none lg:grid-cols-3"
     >
       {
         tiers.map((tier) => (

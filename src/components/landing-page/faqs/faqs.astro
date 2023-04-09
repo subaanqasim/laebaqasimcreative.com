@@ -26,12 +26,13 @@ const faqs = [
 <div id="faq">
   <Container className="py-24 sm:py-32 lg:py-40">
     <h2
+      id="faq-title"
       class="mt-2 text-center text-4xl font-bold tracking-tight text-gray-950 dark:text-gray-50 sm:text-5xl"
     >
       FAQs
     </h2>
 
-    <div class="mx-auto mt-16 max-w-3xl">
+    <div id="faq-list" class="mx-auto mt-16 max-w-3xl">
       <FaqList faqs={faqs} client:idle />
     </div>
   </Container>

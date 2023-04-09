@@ -21,14 +21,19 @@ import Layout from "../layouts/BaseLayout.astro";
 <script>
   import { animate, inView, scroll, stagger } from "motion";
 
-  const navbar = document.querySelector("nav");
-  const heroText = document.querySelector("#hero-text");
-  const heroImages = document.querySelector("#hero-images");
-
   const duration = 0.85;
   const easing = [0, 0.25, 0.1, 1] as const;
   const animateOpts = { duration, easing };
-  const inViewOpts = { margin: "0px 0px -200px 0px" };
+  const inViewOpts = { margin: "0px 0px 5px 0px" };
+  const fadeInUp = {
+    transform: ["translateY(100px)", "none"],
+    opacity: [0, 1],
+    filter: ["blur(4px)", "blur(0px)"],
+  };
+
+  const navbar = document.querySelector("nav");
+  const heroText = document.querySelector("#hero-text");
+  const heroImages = document.querySelector("#hero-images");
 
   // animate navbar
   animate(navbar!, { transform: ["translateY(-100%)", "none"] }, animateOpts);
@@ -37,15 +42,10 @@ import Layout from "../layouts/BaseLayout.astro";
   inView(
     heroText!,
     ({ target }) => {
-      animate(
-        [...target.children],
-        {
-          transform: ["translateY(100px)", "none"],
-          opacity: [0, 1],
-          filter: ["blur(4px)", "blur(0px)"],
-        },
-        { ...animateOpts, delay: stagger(0.1) },
-      );
+      animate([...target.children], fadeInUp, {
+        ...animateOpts,
+        delay: stagger(0.1),
+      });
     },
     inViewOpts,
   );
@@ -70,4 +70,41 @@ import Layout from "../layouts/BaseLayout.astro";
   scroll(animate(heroImages!, { transform: ["none", "translateX(-100%)"] }), {
     offset: ["0vh", "100vh"],
   });
+
+  // aniamte rest of page
+
+  const explainerText1 = document.querySelector("#explainer-text-1");
+  const explainerText2 = document.querySelector("#explainer-text-2");
+  const explainerSteps1 = document.querySelector("#explainer-steps-1");
+  const explainerSteps2 = document.querySelector("#explainer-steps-2");
+  const explainerImg = document.querySelector("#explainer-img");
+
+  const benefitsText = document.querySelector("#benefits-text");
+  const benefitsList = document.querySelector("#benefits-list");
+
+  const pricingText = document.querySelector("#pricing-text");
+  const pricingTiers = document.querySelector("#pricing-tiers");
+
+  const faqTitle = document.querySelector("#faq-title");
+  const faqList = document.querySelector("#faq-list");
+
+  inView(
+    [
+      ...explainerText1!.children,
+      ...explainerSteps1!.children,
+      ...explainerText2!.children,
+      ...explainerSteps2!.children,
+      explainerImg!,
+      ...benefitsText!.children,
+      ...benefitsList!.children,
+      ...pricingText!.children,
+      ...pricingTiers!.children,
+      faqTitle!,
+      faqList!,
+    ],
+    ({ target }) => {
+      animate(target, fadeInUp, animateOpts);
+    },
+    inViewOpts,
+  );
 </script>

@@ -4,7 +4,7 @@ import { Container } from "@components/ui";
 
 <div class="py-24 sm:py-32">
   <Container>
-    <div class="mx-auto max-w-2xl lg:text-center">
+    <div id="explainer-text-1" class="mx-auto max-w-2xl lg:text-center">
       <h2
         class="text-base font-semibold leading-7 text-amber-600 dark:text-amber-500"
       >
@@ -20,8 +20,10 @@ import { Container } from "@components/ui";
         Suspendisse eget egestas a elementum pulvinar et feugiat.
       </p>
     </div>
+
     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
       <dl
+        id="explainer-steps-1"
         class="grid max-w-xl grid-cols-1 gap-x-12 gap-y-16 text-center lg:max-w-none lg:grid-cols-3"
       >
         <div class="flex flex-col items-center">
@@ -115,23 +117,26 @@ import { Container } from "@components/ui";
     >
       <div class="lg:pr-8 lg:pt-4">
         <div class="lg:max-w-lg">
-          <h2
-            class="text-base font-semibold leading-7 text-amber-600 dark:text-amber-500"
-          >
-            Camera go brrr
-          </h2>
-          <p
-            class="mt-2 text-4xl font-bold tracking-tight text-gray-950 dark:text-gray-50 sm:text-5xl"
-          >
-            Mind-blowingly simple
-          </p>
-          <p class="mt-6 text-xl leading-8 text-gray-700 dark:text-gray-300">
-            No more one-off contracts, unreliable freelancers, endless emails,
-            or expensive in-house photographers. One monthly fee, constant
-            delivery.
-          </p>
+          <div id="explainer-text-2">
+            <h2
+              class="text-base font-semibold leading-7 text-amber-600 dark:text-amber-500"
+            >
+              Camera go brrr
+            </h2>
+            <p
+              class="mt-2 text-4xl font-bold tracking-tight text-gray-950 dark:text-gray-50 sm:text-5xl"
+            >
+              Mind-blowingly simple
+            </p>
+            <p class="mt-6 text-xl leading-8 text-gray-700 dark:text-gray-300">
+              No more one-off contracts, unreliable freelancers, endless emails,
+              or expensive in-house photographers. One monthly fee, constant
+              delivery.
+            </p>
+          </div>
 
           <dl
+            id="explainer-steps-2"
             class="mt-14 max-w-xl space-y-12 text-xl leading-7 text-gray-700 dark:text-gray-300 lg:max-w-none"
           >
             <div class="relative pl-9">
@@ -204,6 +209,7 @@ import { Container } from "@components/ui";
         </div>
       </div>
       <img
+        id="explainer-img"
         src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
         alt="Product screenshot"
         class="my-auto w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-white/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
