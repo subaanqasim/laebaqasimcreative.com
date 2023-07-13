@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@components/ui";
-import { useEffect, useState } from "react";
 
 type FaqListProps = {
   faqs: { question: string; answer: string }[];

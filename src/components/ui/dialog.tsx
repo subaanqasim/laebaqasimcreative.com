@@ -1,7 +1,8 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { cn } from "@lib/utils";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
+
+import { cn } from "@lib/utils";
 
 const Dialog = DialogPrimitive.Dialog;
 const DialogTrigger = DialogPrimitive.Trigger;
@@ -109,11 +110,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn(
-      "text-sm text-gray-500",
-      "dark:text-gray-400",
-      className,
-    )}
+    className={cn("text-sm text-gray-500", "dark:text-gray-400", className)}
     {...props}
   />
 ));
