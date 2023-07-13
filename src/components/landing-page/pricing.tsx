@@ -1,7 +1,8 @@
-import { Button, Tabs, TabsList, TabsTrigger } from "@components/ui";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { cn } from "@lib/utils";
 import { useEffect, useState } from "react";
+
+import { cn } from "@lib/utils";
+import { Button, Tabs, TabsList, TabsTrigger } from "@components/ui";
 
 const tiers = [
   {
@@ -13,12 +14,17 @@ const tiers = [
       annually: "#",
     },
     price: {
-      monthly: "£4,995",
-      quarterly: "£4,495",
-      annually: "£3,995",
+      monthly: 4995,
+      quarterly: 4495,
+      annually: 3995,
     },
     description: "The essentials to provide your best work for clients.",
-    features: ["Feature 1", "Feature 2", "Feature 3", "Feature 4"],
+    features: [
+      "Unlimited requests",
+      "Unlimited brands",
+      "Unlimited users",
+      "Up to 5 photos in one project",
+    ],
     mostPopular: false,
   },
   {
@@ -30,12 +36,17 @@ const tiers = [
       annually: "#",
     },
     price: {
-      monthly: "£5,495",
-      quarterly: "£4,995",
-      annually: "£4,495",
+      monthly: 5495,
+      quarterly: 4995,
+      annually: 4495,
     },
     description: "A plan that scales with your rapidly growing business.",
-    features: ["Feature 1", "Feature 2", "Feature 3", "Feature 4", "Feature 5"],
+    features: [
+      "Unlimited requests",
+      "Unlimited brands",
+      "Unlimited users",
+      "Up to 15 photos in one project",
+    ],
     mostPopular: true,
   },
   {
@@ -47,18 +58,16 @@ const tiers = [
       annually: "#",
     },
     price: {
-      monthly: "£6,495",
-      quarterly: "£5,995",
-      annually: "£5,495",
+      monthly: 6495,
+      quarterly: 5995,
+      annually: 5495,
     },
     description: "Dedicated support and infrastructure for your company.",
     features: [
-      "Feature 1",
-      "Feature 2",
-      "Feature 3",
-      "Feature 4",
-      "Feature 5",
-      "Feature 6",
+      "Unlimited requests",
+      "Unlimited brands",
+      "Unlimited users",
+      "Up to 30 photos in one project",
     ],
     mostPopular: false,
   },
@@ -102,8 +111,8 @@ export function PricingSection() {
             <div className="flex justify-center">
               <Tabs
                 value={activePeriod}
-                onValueChange={(val: (typeof billingPeriods)[number]) =>
-                  setActivePeriod(val)
+                onValueChange={(val) =>
+                  setActivePeriod(val as (typeof billingPeriods)[number])
                 }
                 className=""
               >
@@ -147,17 +156,27 @@ export function PricingSection() {
                 </p>
                 <p className="mt-6 flex items-baseline gap-x-1">
                   <span className="text-4xl font-semibold tracking-tight text-gray-950 dark:text-gray-50">
-                    {tier.price[activePeriod]}
+                    {tier.price[activePeriod].toLocaleString("en-GB", {
+                      style: "currency",
+                      currency: "GBP",
+                      maximumFractionDigits: 0,
+                    })}
                   </span>
                   <span className="text-sm font-medium leading-6 text-gray-700 dark:text-gray-300">
                     /mo
                   </span>
                 </p>
-                <span className="text-xs font-light text-gray-600 dark:text-gray-400">
+                <span className="text-sm font-light text-gray-600 dark:text-gray-400">
                   Billed{" "}
                   {activePeriod === "monthly"
                     ? "monthly - cancel or pause anytime"
-                    : activePeriod}
+                    : `${activePeriod} (save ${(
+                        tier.price.monthly - tier.price[activePeriod]
+                      ).toLocaleString("en-GB", {
+                        style: "currency",
+                        currency: "GBP",
+                        maximumFractionDigits: 0,
+                      })} per month!)`}
                 </span>
                 <Button
                   as="a"
@@ -187,6 +206,15 @@ export function PricingSection() {
                       {feature}
                     </li>
                   ))}
+                  {activePeriod === "monthly" ? (
+                    <li className="flex gap-x-3">
+                      <CheckIcon
+                        className="h-6 w-5 flex-none text-gray-950 dark:text-gray-50"
+                        aria-hidden="true"
+                      />
+                      Pause or cancel anytime
+                    </li>
+                  ) : null}
                 </ul>
               </div>
             ))}

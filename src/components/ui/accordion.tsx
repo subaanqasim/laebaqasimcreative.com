@@ -1,7 +1,8 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { cn } from "@lib/utils";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import * as React from "react";
+
+import { cn } from "@lib/utils";
 
 const Accordion = AccordionPrimitive.Root;
 
@@ -52,7 +53,9 @@ const AccordionContent = React.forwardRef<
     )}
     {...props}
   >
-    <div className="pt-0 pb-4">{children}</div>
+    <p className="pt-0 pb-4" style={{ whiteSpace: "pre-line" }}>
+      {children}
+    </p>
   </AccordionPrimitive.Content>
 ));
 AccordionContent.displayName = "AccordionContent";
