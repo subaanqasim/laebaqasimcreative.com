@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@lib/utils";
 import { Button, Tabs, TabsList, TabsTrigger } from "@components/ui";
+import { env } from "@lib/env";
 
 const tiers = [
   {
     name: "Bronze",
     id: "tier-bronze",
     href: {
-      monthly: "#",
-      quarterly: "#",
-      annually: "#",
+      monthly: env.PUBLIC_BRONZE_MONTHLY,
+      quarterly: env.PUBLIC_BRONZE_QUARTERLY,
+      annually: env.PUBLIC_BRONZE_ANNUALLY,
     },
     price: {
       monthly: 4995,
@@ -31,9 +32,9 @@ const tiers = [
     name: "Silver",
     id: "tier-silver",
     href: {
-      monthly: "#",
-      quarterly: "#",
-      annually: "#",
+      monthly: env.PUBLIC_SILVER_MONTHLY,
+      quarterly: env.PUBLIC_SILVER_QUARTERLY,
+      annually: env.PUBLIC_SILVER_ANNUALLY,
     },
     price: {
       monthly: 5495,
@@ -53,9 +54,9 @@ const tiers = [
     name: "Gold",
     id: "tier-gold",
     href: {
-      monthly: "#",
-      quarterly: "#",
-      annually: "#",
+      monthly: env.PUBLIC_GOLD_MONTHLY,
+      quarterly: env.PUBLIC_GOLD_QUARTERLY,
+      annually: env.PUBLIC_GOLD_ANNUALLY,
     },
     price: {
       monthly: 6495,

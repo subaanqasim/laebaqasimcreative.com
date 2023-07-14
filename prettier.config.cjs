@@ -10,8 +10,17 @@ module.exports = {
   arrowParens: "always",
   endOfLine: "lf",
   plugins: [
+    require.resolve("prettier-plugin-astro"),
     require.resolve("prettier-plugin-tailwindcss"),
     require.resolve("@ianvs/prettier-plugin-sort-imports"),
+  ],
+  overrides: [
+    {
+      files: "*.astro",
+      options: {
+        parser: "astro",
+      },
+    },
   ],
   importOrder: [
     "<THIRD_PARTY_MODULES>",
