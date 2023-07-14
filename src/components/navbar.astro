@@ -5,6 +5,7 @@ import { Container } from "@components/ui";
 import logo from "../../public/lqc-logo.svg";
 import { MobileNavDialog } from "./mobile-nav-dialog";
 import ThemeToggle from "./theme-toggle.astro";
+import { env } from "@lib/env";
 
 const navigation = [
   { name: "Benefits", href: "/#benefits" },
@@ -61,7 +62,7 @@ const navigation = [
       </div>
 
       <a
-        href="/login"
+        href={env.PUBLIC_PORTAL_URL}
         class="text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
       >
         Log in <span aria-hidden="true">&rarr;</span>

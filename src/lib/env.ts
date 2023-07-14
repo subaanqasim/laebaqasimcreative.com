@@ -22,6 +22,7 @@ export const env = createEnv({
     PUBLIC_GOLD_QUARTERLY: z.string().url(),
     PUBLIC_GOLD_ANNUALLY: z.string().url(),
 
+    PUBLIC_PORTAL_URL: z.string().url(),
   },
   /**
    * What object holds the environment variables at runtime.
