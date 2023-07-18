@@ -1,9 +1,9 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
+import { env } from "@lib/env";
 import { cn } from "@lib/utils";
 import { Button, Tabs, TabsList, TabsTrigger } from "@components/ui";
-import { env } from "@lib/env";
 
 const tiers = [
   {
