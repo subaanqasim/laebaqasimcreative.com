@@ -1,5 +1,5 @@
 /** @type {import("@ianvs/prettier-plugin-sort-imports").PrettierConfig} */
-module.exports = {
+export default {
   printWidth: 80,
   tabWidth: 2,
   useTabs: false,
@@ -10,9 +10,9 @@ module.exports = {
   arrowParens: "always",
   endOfLine: "lf",
   plugins: [
-    require.resolve("prettier-plugin-astro"),
-    require.resolve("prettier-plugin-tailwindcss"),
-    require.resolve("@ianvs/prettier-plugin-sort-imports"),
+    "prettier-plugin-astro",
+    "prettier-plugin-tailwindcss",
+    "@ianvs/prettier-plugin-sort-imports",
   ],
   overrides: [
     {
