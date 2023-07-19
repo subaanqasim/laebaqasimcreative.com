@@ -7,7 +7,10 @@ export const env = createEnv({
    * This is enforced both on type-level and at runtime.
    */
   clientPrefix: "PUBLIC_",
-  server: {},
+  server: {
+    STRIPE_SECRET_KEY: z.string(),
+    STRIPE_WEBHOOK_SECRET: z.string(),
+  },
   client: {
     PUBLIC_BRONZE_MONTHLY: z.string().url(),
     PUBLIC_BRONZE_QUARTERLY: z.string().url(),
@@ -22,6 +25,8 @@ export const env = createEnv({
     PUBLIC_GOLD_ANNUALLY: z.string().url(),
 
     PUBLIC_PORTAL_URL: z.string().url(),
+
+    PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
   },
   /**
    * What object holds the environment variables at runtime.
