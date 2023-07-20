@@ -4,7 +4,8 @@ import Stripe from "stripe";
 // import { createClient } from "uncreate";
 
 import { env } from "@lib/env";
-import { test } from "@lib/test";
+
+import { test } from "../../src/lib/test";
 
 export const config = {
   runtime: "edge",
