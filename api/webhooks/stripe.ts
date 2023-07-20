@@ -4,7 +4,6 @@ import Stripe from "stripe";
 // import { createClient } from "uncreate";
 
 import { env } from "@lib/env";
-import { stripe, webCrypto } from "@lib/stripe";
 
 export const config = {
   runtime: "edge",
@@ -23,6 +22,13 @@ export const config = {
 //     console.log("[fetch response error]", request, error);
 //   },
 // });
+
+const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+  apiVersion: "2022-11-15",
+  httpClient: Stripe.createFetchHttpClient(),
+});
+
+const webCrypto = Stripe.createSubtleCryptoProvider();
 
 function recurringRevenue(
   subscription: Stripe.Subscription,
