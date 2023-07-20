@@ -3,9 +3,8 @@ import Stripe from "stripe";
 
 // import { createClient } from "uncreate";
 
-import { env } from "@lib/env";
-
-import { test } from "../../src/lib/test";
+import { env } from "../../src/lib/env";
+import { stripe, webCrypto } from "../../src/lib/stripe";
 
 export const config = {
   runtime: "edge",
@@ -24,13 +23,6 @@ export const config = {
 //     console.log("[fetch response error]", request, error);
 //   },
 // });
-
-const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-  apiVersion: "2022-11-15",
-  httpClient: Stripe.createFetchHttpClient(),
-});
-
-const webCrypto = Stripe.createSubtleCryptoProvider();
 
 function recurringRevenue(
   subscription: Stripe.Subscription,
@@ -62,7 +54,6 @@ function recurringRevenue(
 }
 
 export default async function handler(req: Request) {
-  console.log(test);
   if (req.method === "POST") {
     const signature = req.headers.get("stripe-signature");
 
