@@ -10,6 +10,10 @@ export const env = createEnv({
   server: {
     STRIPE_SECRET_KEY: z.string(),
     STRIPE_WEBHOOK_SECRET: z.string(),
+    RESEND_API_KEY: z.string(),
+    NOTION_SECRET_KEY: z.string(),
+    NOTION_DATABASE_ID: z.string(),
+    // TRELLO_TOKEN: z.string(),
   },
   client: {
     PUBLIC_BRONZE_MONTHLY: z.string().url(),
@@ -27,6 +31,8 @@ export const env = createEnv({
     PUBLIC_PORTAL_URL: z.string().url(),
 
     PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
+
+    // PUBLIC_TRELLO_API_KEY: z.string(),
   },
   /**
    * What object holds the environment variables at runtime.
