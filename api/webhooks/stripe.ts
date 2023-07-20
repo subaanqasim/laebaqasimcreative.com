@@ -4,7 +4,7 @@ import Stripe from "stripe";
 // import { createClient } from "uncreate";
 
 import { env } from "@lib/env";
-import { cn } from "@lib/utils";
+import { test } from "@lib/test";
 
 export const config = {
   runtime: "edge",
@@ -30,8 +30,6 @@ const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
 });
 
 const webCrypto = Stripe.createSubtleCryptoProvider();
-
-const test = cn("1", "2");
 
 function recurringRevenue(
   subscription: Stripe.Subscription,
