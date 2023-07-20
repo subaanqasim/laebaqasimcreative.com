@@ -3,8 +3,8 @@ import Stripe from "stripe";
 
 // import { createClient } from "uncreate";
 
-import { env } from "../../src/lib/env";
-import { stripe, webCrypto } from "../../src/lib/stripe";
+import { env } from "@lib/env";
+import { stripe, webCrypto } from "@lib/stripe";
 
 export const config = {
   runtime: "edge",
