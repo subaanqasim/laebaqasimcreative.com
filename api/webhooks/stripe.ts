@@ -4,7 +4,6 @@ import Stripe from "stripe";
 // import { createClient } from "uncreate";
 
 import { env } from "../../src/lib/env";
-import { stripe, webCrypto } from "../../src/lib/stripe";
 
 export const config = {
   runtime: "edge",
@@ -64,6 +63,12 @@ export default async function handler(req: Request) {
     }
 
     try {
+      const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+        apiVersion: "2022-11-15",
+        httpClient: Stripe.createFetchHttpClient(),
+      });
+
+      const webCrypto = Stripe.createSubtleCryptoProvider();
       const event = await stripe.webhooks.constructEventAsync(
         await req.text(),
         signature,
