@@ -4,6 +4,7 @@ import Stripe from "stripe";
 // import { createClient } from "uncreate";
 
 import { env } from "@lib/env";
+import { cn } from "@lib/utils";
 
 export const config = {
   runtime: "edge",
@@ -29,6 +30,8 @@ const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
 });
 
 const webCrypto = Stripe.createSubtleCryptoProvider();
+
+const test = cn("1", "2");
 
 function recurringRevenue(
   subscription: Stripe.Subscription,
@@ -60,6 +63,7 @@ function recurringRevenue(
 }
 
 export default async function handler(req: Request) {
+  console.log(test);
   if (req.method === "POST") {
     const signature = req.headers.get("stripe-signature");
 
