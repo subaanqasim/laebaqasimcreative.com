@@ -97,11 +97,26 @@ export default async function handler(req: Request) {
               from: "Laeba Qasim <laeba@laebaqasimcreative.com>",
               to: [checkoutData.customer_details?.email],
               subject: "Welcome to Photography as a Service",
-              html: `<p>Hey${
-                checkoutData.customer_details?.name
-                  ? ` ${checkoutData.customer_details.name}`
-                  : ""
-              },</p><p>Thanks for subscribing to the ${formattedPlan} photography as a service plan!</p><p>You'll receive an invite to your personal Trello board within the next few hours which will include the onboarding process.</p><p>Laeba<br />Founder, <a href="https://laebaqasimcreative.com">Laeba Qasim Creative</a></p><p>P.S. Still have concerns or questions after the onboarding? <a href="https://cal.com/laebaqasimcreative/30min">Book a call with me</a>.</p>`,
+              html: `<!DOCTYPE html>
+                      <html>
+                      <head>
+                          <meta charset="UTF-8">
+                          <title>Welcome to Photography as a Service</title>
+                          <style>
+                              body {
+                                  font-family: Arial, sans-serif;
+                              }
+                          </style>
+                      </head>
+                      <body>
+                          <p>Hey${
+                            checkoutData.customer_details?.name
+                              ? ` ${checkoutData.customer_details.name}`
+                              : ""
+                          },</p><p>Thanks for subscribing to the <strong>${formattedPlan}</strong> <em>photography as a service</em> plan!</p><p>You'll receive an invite to your personal Trello board within the next few hours which will include the onboarding process.</p><p></p><p>Laeba<br>Founder, <a target="_blank" rel="noopener noreferrer nofollow" href="https://laebaqasimcreative.com">Laeba Qasim Creative</a></p><p>P.S. Still have questions or concerns after the onboarding? <a target="_blank" rel="noopener noreferrer nofollow" href="https://cal.com/laebaqasimcreative/30min">Book a call with me</a>.</p>
+                      </body>
+                      </html>
+                      `,
             }),
           });
 
