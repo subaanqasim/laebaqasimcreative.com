@@ -70,19 +70,19 @@ export default async function handler(req: Request) {
     }
 
     try {
-      const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-        apiVersion: "2022-11-15",
-        httpClient: Stripe.createFetchHttpClient(),
-      });
-      const webCrypto = Stripe.createSubtleCryptoProvider();
-
-      const event = await stripe.webhooks.constructEventAsync(
-        await req.text(),
-        signature,
-        env.STRIPE_WEBHOOK_SECRET,
-        undefined,
-        webCrypto,
-      );
+      // const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+      //   apiVersion: "2022-11-15",
+      //   httpClient: Stripe.createFetchHttpClient(),
+      // });
+      // const webCrypto =  Stripe.createSubtleCryptoProvider();
+      //
+      // const event = await stripe.webhooks.constructEventAsync(
+      //   await req.text(),
+      //   signature,
+      //   env.STRIPE_WEBHOOK_SECRET,
+      //   undefined,
+      //   webCrypto,
+      // );
 
       // const elements = signature.split(",");
       // const timestamp = elements[0]?.split("=")[1];
@@ -112,7 +112,7 @@ export default async function handler(req: Request) {
       //   console.log("VERIFIED");
       // }
 
-      // const event = (await req.json()) as Stripe.Event;
+      const event = (await req.json()) as Stripe.Event;
 
       switch (event.type) {
         case "checkout.session.completed":
@@ -120,22 +120,22 @@ export default async function handler(req: Request) {
 
           const checkoutData = event.data.object as Stripe.Checkout.Session;
 
-          const subscriptionData = await stripe.subscriptions.retrieve(
-            checkoutData.subscription!.toString(),
-          );
+          // const subscriptionData = await stripe.subscriptions.retrieve(
+          //   checkoutData.subscription!.toString(),
+          // );
 
-          // const subscriptionData = (await (
-          //   await fetch(
-          //     `https://api.stripe.com/v1/subscriptions/${checkoutData.subscription}`,
-          //     {
-          //       headers: {
-          //         Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
-          //         "Stripe-Version": "2022-11-15",
-          //       },
-          //     },
-          //   )
-          // ).json()) as Stripe.Subscription;
-          //
+          const subscriptionData = (await (
+            await fetch(
+              `https://api.stripe.com/v1/subscriptions/${checkoutData.subscription}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+                  "Stripe-Version": "2022-11-15",
+                },
+              },
+            )
+          ).json()) as Stripe.Subscription;
+
           const formattedPlan =
             subscriptionData.items.data[0]!.plan.nickname!.toLowerCase()
               .split(" ")
