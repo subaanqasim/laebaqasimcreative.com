@@ -23,6 +23,13 @@ export const config = {
 //   },
 // });
 
+// function hexStringToUint8Array(hexString: string) {
+//   const bytes = new Uint8Array(Math.ceil(hexString.length / 2));
+//   for (let i = 0; i < bytes.length; i++)
+//     bytes[i] = parseInt(hexString.substr(i * 2, 2), 16);
+//   return bytes;
+// }
+
 function recurringRevenue(
   subscription: Stripe.Subscription,
   type: "MRR" | "ARR",
@@ -63,40 +70,49 @@ export default async function handler(req: Request) {
     }
 
     try {
-      // const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-      //   apiVersion: "2022-11-15",
-      //   httpClient: Stripe.createFetchHttpClient(),
-      // });
-      // const webCrypto = Stripe.createSubtleCryptoProvider();
+      const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+        apiVersion: "2022-11-15",
+        httpClient: Stripe.createFetchHttpClient(),
+      });
+      const webCrypto = Stripe.createSubtleCryptoProvider();
 
-      // const event = await stripe.webhooks.constructEventAsync(
-      //   await req.text(),
-      //   signature,
-      //   env.STRIPE_WEBHOOK_SECRET,
-      //   undefined,
-      //   webCrypto,
-      // );
-
-      const event = (await req.json()) as Stripe.Event;
+      const event = await stripe.webhooks.constructEventAsync(
+        await req.text(),
+        signature,
+        env.STRIPE_WEBHOOK_SECRET,
+        undefined,
+        webCrypto,
+      );
 
       // const elements = signature.split(",");
       // const timestamp = elements[0]?.split("=")[1];
       // const signatureHash = elements[1]?.split("=")[1];
-      //
-      // const cryptoKey = crypto.subtle.importKey(
+
+      // const encoder = new TextEncoder();
+      // const cryptoKey = await window.crypto.subtle.importKey(
       //   "raw",
-      //   env.STRIPE_WEBHOOK_SECRET,
+      //   encoder.encode(env.STRIPE_WEBHOOK_SECRET),
       //   { name: "HMAC", hash: "SHA_256" },
       //   false,
-      //   ["verify", "decrypt", "encrypt"],
+      //   ["verify"],
       // );
       //
-      // crypto.subtle.verify(
+      // const verified = await window.crypto.subtle.verify(
       //   { name: "HMAC" },
-      //   env.STRIPE_WEBHOOK_SECRET,
-      //   signatureHash,
-      //   timestamp + "." + req.text(),
+      //   cryptoKey,
+      //   hexStringToUint8Array(signatureHash!),
+      //   encoder.encode(`${timestamp}.${await req.text()}`),
       // );
+      //
+      // if (!verified) {
+      //   console.log("NOT VERIFIED");
+      // }
+      //
+      // if (verified) {
+      //   console.log("VERIFIED");
+      // }
+
+      // const event = (await req.json()) as Stripe.Event;
 
       switch (event.type) {
         case "checkout.session.completed":
@@ -104,22 +120,22 @@ export default async function handler(req: Request) {
 
           const checkoutData = event.data.object as Stripe.Checkout.Session;
 
-          // const subscriptionData = await stripe.subscriptions.retrieve(
-          //   checkoutData.subscription!.toString(),
-          // );
+          const subscriptionData = await stripe.subscriptions.retrieve(
+            checkoutData.subscription!.toString(),
+          );
 
-          const subscriptionData = (await (
-            await fetch(
-              `https://api.stripe.com/v1/subscriptions/${checkoutData.subscription}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
-                  "Stripe-Version": "2022-11-15",
-                },
-              },
-            )
-          ).json()) as Stripe.Subscription;
-
+          // const subscriptionData = (await (
+          //   await fetch(
+          //     `https://api.stripe.com/v1/subscriptions/${checkoutData.subscription}`,
+          //     {
+          //       headers: {
+          //         Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+          //         "Stripe-Version": "2022-11-15",
+          //       },
+          //     },
+          //   )
+          // ).json()) as Stripe.Subscription;
+          //
           const formattedPlan =
             subscriptionData.items.data[0]!.plan.nickname!.toLowerCase()
               .split(" ")
