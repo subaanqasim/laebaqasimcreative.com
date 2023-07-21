@@ -1,20 +1,20 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 import { Button, Container } from "@components/ui";
 
-import camembertImg from "../../../public/images/camembert.jpg";
-import figsImg2 from "../../../public/images/figs-2.jpg";
-import figsImg from "../../../public/images/figs.jpg";
-import frenchToastImg from "../../../public/images/french-toast.jpg";
-import pestoPastaImg from "../../../public/images/pesto-pasta.jpg";
-import seabassImg from "../../../public/images/seabass.jpg";
-import tomatoImg from "../../../public/images/tomato.jpg";
-import tomatoesImg from "../../../public/images/tomatoes.jpg";
-import victoriaSpongeImg2 from "../../../public/images/victoria-sponge-2.jpg";
-import victoriaSpongeImg from "../../../public/images/victoria-sponge.jpg";
-import whiteDrinkWithFlowersImg from "../../../public/images/white-drink-with-flowers.jpg";
-import whiteDrinkImg from "../../../public/images/white-drink.jpg";
+import camembertImg from "@assets/images/camembert.jpg";
+import figsImg2 from "@assets/images/figs-2.jpg";
+import figsImg from "@assets/images/figs.jpg";
+import frenchToastImg from "@assets/images/french-toast.jpg";
+import pestoPastaImg from "@assets/images/pesto-pasta.jpg";
+import seabassImg from "@assets/images/seabass.jpg";
+import tomatoImg from "@assets/images/tomato.jpg";
+import tomatoesImg from "@assets/images/tomatoes.jpg";
+import victoriaSpongeImg2 from "@assets/images/victoria-sponge-2.jpg";
+import victoriaSpongeImg from "@assets/images/victoria-sponge.jpg";
+import whiteDrinkWithFlowersImg from "@assets/images/white-drink-with-flowers.jpg";
+import whiteDrinkImg from "@assets/images/white-drink.jpg";
 ---
 
 <div class="relative pt-8" id="home">
@@ -205,143 +205,7 @@ import whiteDrinkImg from "../../../public/images/white-drink.jpg";
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-            <div class="relative">
-              <Image
-                src={pestoPastaImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-          </div>
-
-          <div class="w-48 flex-none space-y-8 pt-32 sm:pt-0">
-            <div class="relative">
-              <Image
-                src={seabassImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-            <div class="relative">
-              <Image
-                src={tomatoImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
-          >
-            <div class="relative">
-              <Image
-                src={tomatoesImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-            <div class="relative">
-              <Image
-                src={victoriaSpongeImg2}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-          </div>
-
-          <div class="w-48 flex-none space-y-8 pt-32 sm:pt-0">
-            <div class="relative">
-              <Image
-                src={whiteDrinkWithFlowersImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-            <div class="relative">
-              <Image
-                src={victoriaSpongeImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
-          >
-            <div class="relative">
-              <Image
-                src={camembertImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
-            </div>
-            <div class="relative">
-              <Image
-                src={frenchToastImg}
-                loading="eager"
-                format="webp"
-                alt=""
-                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
-              />
-              <div
-                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
-              >
-              </div>
+               <div class="pointer-events-none absolute inset-0 r
             </div>
           </div>
         </div>

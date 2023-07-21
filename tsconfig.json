@@ -7,7 +7,8 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@lib/*": ["src/lib/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@assets/*": ["src/assets/*"]
     },
     "jsx": "preserve"
   }
