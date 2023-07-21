@@ -63,19 +63,21 @@ export default async function handler(req: Request) {
     }
 
     try {
-      const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-        apiVersion: "2022-11-15",
-        httpClient: Stripe.createFetchHttpClient(),
-      });
-      const webCrypto = Stripe.createSubtleCryptoProvider();
+      // const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+      //   apiVersion: "2022-11-15",
+      //   httpClient: Stripe.createFetchHttpClient(),
+      // });
+      // const webCrypto = Stripe.createSubtleCryptoProvider();
 
-      const event = await stripe.webhooks.constructEventAsync(
-        await req.text(),
-        signature,
-        env.STRIPE_WEBHOOK_SECRET,
-        undefined,
-        webCrypto,
-      );
+      // const event = await stripe.webhooks.constructEventAsync(
+      //   await req.text(),
+      //   signature,
+      //   env.STRIPE_WEBHOOK_SECRET,
+      //   undefined,
+      //   webCrypto,
+      // );
+
+      const event = (await req.json()) as Stripe.Event;
 
       // const elements = signature.split(",");
       // const timestamp = elements[0]?.split("=")[1];
