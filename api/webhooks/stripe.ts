@@ -1,5 +1,5 @@
 import { Client as Notion } from "@notionhq/client";
-import Stripe from "stripe";
+import type Stripe from "stripe";
 
 // import { createClient } from "uncreate";
 
@@ -254,8 +254,9 @@ export default async function handler(req: Request) {
             status: 500,
           });
       }
-    } catch (err) {
-      if (err instanceof Stripe.errors.StripeError) {
+    } catch (err: any) {
+      // if (err instanceof Stripe.errors.StripeError) {
+      if (err) {
         switch (err.type) {
           case "StripeSignatureVerificationError":
             console.error({
