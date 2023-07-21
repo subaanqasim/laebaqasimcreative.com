@@ -67,8 +67,8 @@ export default async function handler(req: Request) {
         apiVersion: "2022-11-15",
         httpClient: Stripe.createFetchHttpClient(),
       });
-
       const webCrypto = Stripe.createSubtleCryptoProvider();
+
       const event = await stripe.webhooks.constructEventAsync(
         await req.text(),
         signature,
@@ -77,14 +77,46 @@ export default async function handler(req: Request) {
         webCrypto,
       );
 
+      // const elements = signature.split(",");
+      // const timestamp = elements[0]?.split("=")[1];
+      // const signatureHash = elements[1]?.split("=")[1];
+      //
+      // const cryptoKey = crypto.subtle.importKey(
+      //   "raw",
+      //   env.STRIPE_WEBHOOK_SECRET,
+      //   { name: "HMAC", hash: "SHA_256" },
+      //   false,
+      //   ["verify", "decrypt", "encrypt"],
+      // );
+      //
+      // crypto.subtle.verify(
+      //   { name: "HMAC" },
+      //   env.STRIPE_WEBHOOK_SECRET,
+      //   signatureHash,
+      //   timestamp + "." + req.text(),
+      // );
+
       switch (event.type) {
         case "checkout.session.completed":
           console.log("Customer subscription created");
 
           const checkoutData = event.data.object as Stripe.Checkout.Session;
-          const subscriptionData = await stripe.subscriptions.retrieve(
-            checkoutData.subscription!.toString(),
-          );
+
+          // const subscriptionData = await stripe.subscriptions.retrieve(
+          //   checkoutData.subscription!.toString(),
+          // );
+
+          const subscriptionData = (await (
+            await fetch(
+              `https://api.stripe.com/v1/subscriptions/${checkoutData.subscription}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+                  "Stripe-Version": "2022-11-15",
+                },
+              },
+            )
+          ).json()) as Stripe.Subscription;
 
           const formattedPlan =
             subscriptionData.items.data[0]!.plan.nickname!.toLowerCase()
