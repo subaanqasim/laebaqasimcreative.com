@@ -1,11 +1,12 @@
 ---
-import { Image } from "@astrojs/image/components";
+import logo from "@assets/lqc-logo.svg";
+import { Image } from "astro:assets";
+
+import { env } from "@lib/env";
 import { Container } from "@components/ui";
 
-import logo from "../../public/lqc-logo.svg";
 import { MobileNavDialog } from "./mobile-nav-dialog";
 import ThemeToggle from "./theme-toggle.astro";
-import { env } from "@lib/env";
 
 const navigation = [
   { name: "Benefits", href: "/#benefits" },
