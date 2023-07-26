@@ -7,7 +7,7 @@ import { defineConfig } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.laebaqasimcreative.com",
-  output: "server",
+  output: "hybrid",
   adapter: vercel({
     imageService: true,
   }),

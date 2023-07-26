@@ -1,7 +1,7 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
-import { env } from "@lib/env";
+import { envSchema } from "@lib/envSchema";
 import { cn } from "@lib/utils";
 import { Button, Tabs, TabsList, TabsTrigger } from "@components/ui";
 
@@ -10,9 +10,9 @@ const tiers = [
     name: "Bronze",
     id: "tier-bronze",
     href: {
-      monthly: env.PUBLIC_BRONZE_MONTHLY,
-      quarterly: env.PUBLIC_BRONZE_QUARTERLY,
-      annually: env.PUBLIC_BRONZE_ANNUALLY,
+      monthly: envSchema.PUBLIC_BRONZE_MONTHLY,
+      quarterly: envSchema.PUBLIC_BRONZE_QUARTERLY,
+      annually: envSchema.PUBLIC_BRONZE_ANNUALLY,
     },
     price: {
       monthly: 4995,
@@ -32,9 +32,9 @@ const tiers = [
     name: "Silver",
     id: "tier-silver",
     href: {
-      monthly: env.PUBLIC_SILVER_MONTHLY,
-      quarterly: env.PUBLIC_SILVER_QUARTERLY,
-      annually: env.PUBLIC_SILVER_ANNUALLY,
+      monthly: envSchema.PUBLIC_SILVER_MONTHLY,
+      quarterly: envSchema.PUBLIC_SILVER_QUARTERLY,
+      annually: envSchema.PUBLIC_SILVER_ANNUALLY,
     },
     price: {
       monthly: 5495,
@@ -54,9 +54,9 @@ const tiers = [
     name: "Gold",
     id: "tier-gold",
     href: {
-      monthly: env.PUBLIC_GOLD_MONTHLY,
-      quarterly: env.PUBLIC_GOLD_QUARTERLY,
-      annually: env.PUBLIC_GOLD_ANNUALLY,
+      monthly: envSchema.PUBLIC_GOLD_MONTHLY,
+      quarterly: envSchema.PUBLIC_GOLD_QUARTERLY,
+      annually: envSchema.PUBLIC_GOLD_ANNUALLY,
     },
     price: {
       monthly: 6495,
