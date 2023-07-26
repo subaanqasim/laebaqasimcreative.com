@@ -2,7 +2,7 @@
 import logo from "@assets/lqc-logo.svg";
 import { Image } from "astro:assets";
 
-import { env } from "@lib/env";
+import { envSchema } from "@lib/envSchema";
 import { Container } from "@components/ui";
 
 import { MobileNavDialog } from "./mobile-nav-dialog";
@@ -25,10 +25,9 @@ const navigation = [
     <div class="flex flex-1">
       <a href="/#home" class="-m-1.5 p-1.5">
         <span class="sr-only">Laeba Qasim Creative</span>
-        <Image
+        <img
           class="h-[34px] w-auto"
-          src={logo}
-          format="svg"
+          src={logo.src}
           width={32}
           alt=""
           loading="eager"
@@ -63,7 +62,7 @@ const navigation = [
       </div>
 
       <a
-        href={env.PUBLIC_PORTAL_URL}
+        href={envSchema.PUBLIC_PORTAL_URL}
         class="text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
       >
         Log in <span aria-hidden="true">&rarr;</span>
