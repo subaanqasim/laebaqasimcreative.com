@@ -4,10 +4,18 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/edge";
 import { defineConfig } from "astro/config";
 
+const siteUrl =
+  process.env.VERCEL_ENV === "production"
+    ? "https://laebaqasimcreative.com/"
+    : process.env.VERCEL_ENV === "preview"
+    ? `https://${process.env.VERCEL_BRANCH_URL}`
+    : "http://localhost:3000";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.laebaqasimcreative.com",
-  output: "hybrid",
+  site: siteUrl,
+  output: "server",
+  publicDir: "./public",
   adapter: vercel({
     imageService: true,
   }),
