@@ -11,9 +11,9 @@ const siteUrl =
     ? `https://${import.meta.env.PUBLIC_VERCEL_BRANCH_URL}`
     : "http://localhost:3000";
 
-console.log("env: ", import.meta.env.PUBLIC_VERCEL_ENV);
+console.log("env: ", process.env.PUBLIC_VERCEL_ENV);
 console.log("mode: ", import.meta.env.MODE);
-console.log("branch url: ", import.meta.env.PUBLIC_VERCEL_BRANCH_URL);
+console.log("branch url: ", process.env.PUBLIC_VERCEL_BRANCH_URL);
 console.log("siteUrl:", siteUrl);
 
 // https://astro.build/config
