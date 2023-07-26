@@ -48,7 +48,6 @@ export const post: APIRoute = async ({ request }) => {
   try {
     const stripe = new Stripe(envSchema.STRIPE_SECRET_KEY, {
       apiVersion: "2022-11-15",
-      // httpClient: Stripe.createFetchHttpClient(),
     });
 
     const event = stripe.webhooks.constructEvent(
