@@ -7,5 +7,5 @@ export const get: APIRoute = ({ request }) => {
 
   console.log("url:", request.url);
 
-  return { status: 200, ok: true, body: "Logs work?" };
+  return { status: 200, body: "Logs work?" };
 };
