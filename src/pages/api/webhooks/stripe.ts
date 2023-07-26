@@ -2,9 +2,25 @@ import { Client as Notion } from "@notionhq/client";
 import type { APIRoute } from "astro";
 import Stripe from "stripe";
 
+// import { createClient } from "uncreate";
+
 import { envSchema } from "@lib/envSchema";
 
 export const prerender = false;
+
+// const trello = createClient({
+//   baseURL: "https://api.trello.com/1",
+//   params: {
+//     key: env.PUBLIC_TRELLO_API_KEY,
+//     token: env.TRELLO_TOKEN,
+//   },
+//   async onRequestError({ request, error }) {
+//     console.log("[fetch request error]", request, error);
+//   },
+//   async onResponseError({ request, error }) {
+//     console.log("[fetch response error]", request, error);
+//   },
+// });
 
 function recurringRevenue(
   subscription: Stripe.Subscription,
@@ -39,21 +55,23 @@ export const post: APIRoute = async ({ request }) => {
   const signature = request.headers.get("stripe-signature");
 
   if (!signature) {
-    return {
+    return new Response("Unauthorized - no Stripe signature", {
       status: 401,
-      body: "Unauthorized - no Stripe signature",
-    };
+    });
   }
 
   try {
     const stripe = new Stripe(envSchema.STRIPE_SECRET_KEY, {
       apiVersion: "2022-11-15",
+      httpClient: Stripe.createFetchHttpClient(),
     });
 
-    const event = stripe.webhooks.constructEvent(
+    const event = await stripe.webhooks.constructEventAsync(
       await request.text(),
       signature,
       envSchema.STRIPE_WEBHOOK_SECRET,
+      undefined,
+      Stripe.createSubtleCryptoProvider(),
     );
 
     switch (event.type) {
@@ -111,13 +129,15 @@ export const post: APIRoute = async ({ request }) => {
           const data = await email.json();
           console.error("Failed to send welcome email");
 
-          return {
-            status: 500,
-            body: JSON.stringify({
+          return new Response(
+            JSON.stringify({
               ...data,
               msg: "Failed to send welcome email",
             }),
-          };
+            {
+              status: 500,
+            },
+          );
         }
 
         const notion = new Notion({
@@ -164,10 +184,7 @@ export const post: APIRoute = async ({ request }) => {
 
         console.log("Notion client page created successfully!");
 
-        return {
-          status: 200,
-          body: "OK",
-        };
+        return new Response("OK", { status: 200 });
 
       // create trello board
       // const workspace = await trello.boards!().get({name: data.});
@@ -188,10 +205,9 @@ export const post: APIRoute = async ({ request }) => {
       default:
         console.error(`Unhandled Stripe event type: ${event.type}`);
 
-        return {
+        return new Response("Unhandled Stripe event type", {
           status: 500,
-          body: "Unhandled Stripe event type",
-        };
+        });
     }
   } catch (error) {
     if (error instanceof Stripe.errors.StripeError) {
@@ -204,22 +220,21 @@ export const post: APIRoute = async ({ request }) => {
             error,
           });
 
-          return {
-            status: 401,
-            body: "Unauthorized - Stripe signature verification failed",
-          };
+          return new Response(
+            "Unauthorized - Stripe signature verification failed",
+            {
+              status: 401,
+            },
+          );
       }
     }
 
-    return {
+    return new Response("Something blew up - view logs", {
       status: 500,
-      body: "oops something happened",
-    };
+    });
   }
-  return {
-    status: 200,
-    body: "OK",
-  };
+
+  return new Response("OK", { status: 200 });
 };
 
 export const get: APIRoute = () => {
