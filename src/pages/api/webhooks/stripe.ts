@@ -114,7 +114,11 @@ export const post: APIRoute = async ({ request }) => {
                       <body>
                           <p>Hey${
                             checkoutData.customer_details?.name
-                              ? ` ${checkoutData.customer_details.name}`
+                              ? ` ${
+                                  checkoutData.customer_details.name
+                                    .trim()
+                                    .split(" ")[0]
+                                }`
                               : ""
                           },</p><p>Thanks for subscribing to the <strong>${formattedPlan}</strong> <em>photography as a service</em> plan!</p><p>You'll receive an invite to your personal Trello board within the next few hours which will include the onboarding process.</p><p></p><p>Laeba<br>Founder, <a target="_blank" rel="noopener noreferrer nofollow" href="https://laebaqasimcreative.com">Laeba Qasim Creative</a></p><p>P.S. Still have questions or concerns after the onboarding? <a target="_blank" rel="noopener noreferrer nofollow" href="https://cal.com/laebaqasimcreative/30min">Book a call with me</a>.</p>
                       </body>
