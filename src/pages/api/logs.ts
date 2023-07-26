@@ -1,5 +1,7 @@
 import { APIRoute } from "astro";
 
+export const prerender = false;
+
 export const get: APIRoute = ({ request }) => {
   console.log("Logs work??");
 
