@@ -5,11 +5,13 @@ import vercel from "@astrojs/vercel/edge";
 import { defineConfig } from "astro/config";
 
 const siteUrl =
-  process.env.VERCEL_ENV === "production"
+  process.env.PUBLIC_VERCEL_ENV === "production"
     ? "https://laebaqasimcreative.com/"
-    : process.env.VERCEL_ENV === "preview"
-    ? `https://${process.env.VERCEL_BRANCH_URL}`
+    : process.env.PUBLIC_VERCEL_ENV === "preview"
+    ? `https://${process.env.PUBLIC_VERCEL_BRANCH_URL}`
     : "http://localhost:3000";
+
+console.log("siteUrl:", siteUrl);
 
 // https://astro.build/config
 export default defineConfig({
