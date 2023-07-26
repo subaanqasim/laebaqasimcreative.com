@@ -1,7 +1,9 @@
 import { APIRoute } from "astro";
 
-export const get: APIRoute = async ({ request }) => {
+export const get: APIRoute = ({ request }) => {
   console.log("Logs work??");
+
+  console.log("edge runtime?: ", globalThis.EdgeRuntime);
 
   console.log("url:", request.url);
 
