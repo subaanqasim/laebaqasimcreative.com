@@ -20,9 +20,9 @@ importers:
       '@astrojs/vercel':
         specifier: 3.7.4
         version: 3.7.4(astro@2.9.3)(react@18.2.0)
-      '@fontsource-variable/work-sans':
-        specifier: 5.0.6
-        version: 5.0.6
+      '@fontsource-variable/inter':
+        specifier: 5.0.5
+        version: 5.0.5
       '@heroicons/react':
         specifier: 2.0.18
         version: 2.0.18(react@18.2.0)
@@ -1329,8 +1329,8 @@ packages:
       - '@types/react'
     dev: false
 
-  /@fontsource-variable/work-sans@5.0.6:
-    resolution: {integrity: sha512-mnis2eefe69Tt6n68XZhjfdIO9IpvbepBL1obZfIsdh495Y1aSCM261o3jz7Fyet4SJc5QSR0XF3usM96itSvA==}
+  /@fontsource-variable/inter@5.0.5:
+    resolution: {integrity: sha512-hmj/jffr+1tabEPmvm+/b89MtbO6hd5PVbQ6HoMGTO7RMF5eD2C9UcprCgZTOF3OWh5uC21C9HZGN0O9wxe+UQ==}
     dev: false
 
   /@heroicons/react@2.0.18(react@18.2.0):
