@@ -1,8 +1,4 @@
 ---
-import { Image } from "astro:assets";
-
-import { Button, Container } from "@components/ui";
-
 import camembertImg from "@assets/images/camembert.jpg";
 import figsImg2 from "@assets/images/figs-2.jpg";
 import figsImg from "@assets/images/figs.jpg";
@@ -15,6 +11,9 @@ import victoriaSpongeImg2 from "@assets/images/victoria-sponge-2.jpg";
 import victoriaSpongeImg from "@assets/images/victoria-sponge.jpg";
 import whiteDrinkWithFlowersImg from "@assets/images/white-drink-with-flowers.jpg";
 import whiteDrinkImg from "@assets/images/white-drink.jpg";
+import { Image } from "astro:assets";
+
+import { Button, Container } from "@components/ui";
 ---
 
 <div class="relative pt-8" id="home">
@@ -199,7 +198,134 @@ import whiteDrinkImg from "@assets/images/white-drink.jpg";
                 alt=""
                 class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
               />
-               <div class="pointer-events-none absolute inset-0 r
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <Image
+                src={pestoPastaImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div class="w-48 flex-none space-y-8 pt-32 sm:pt-0">
+            <div class="relative">
+              <Image
+                src={seabassImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <Image
+                src={tomatoImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+          >
+            <div class="relative">
+              <Image
+                src={tomatoesImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <Image
+                src={victoriaSpongeImg2}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div class="w-48 flex-none space-y-8 pt-32 sm:pt-0">
+            <div class="relative">
+              <Image
+                src={whiteDrinkWithFlowersImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <Image
+                src={victoriaSpongeImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mr-auto w-48 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+          >
+            <div class="relative">
+              <Image
+                src={camembertImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
+            </div>
+            <div class="relative">
+              <Image
+                src={frenchToastImg}
+                loading="eager"
+                alt=""
+                class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"
+              >
+              </div>
             </div>
           </div>
         </div>
