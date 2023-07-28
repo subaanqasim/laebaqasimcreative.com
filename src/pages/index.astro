@@ -6,10 +6,13 @@ import HeroSection from "@components/landing-page/hero.astro";
 import { PricingSection } from "@components/landing-page/pricing";
 
 import Layout from "../layouts/BaseLayout.astro";
+import SEO from "../layouts/SEO.astro";
 ---
 
-<Layout title="Laeba Qasim Creative">
-  <main>
+<Layout>
+  <SEO slot="seo" title="Photography as a service" />
+
+  <main slot="main">
     <HeroSection />
     <ExplainerSection />
     <BenefitsSection />

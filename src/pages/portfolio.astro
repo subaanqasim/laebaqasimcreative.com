@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/BaseLayout.astro";
+import SEO from "../layouts/SEO.astro";
 ---
 
-<Layout title="Portfolio | Laeba Qasim Creative">
-  <main>
+<Layout>
+  <SEO slot="seo" title="Portfolio" />
+
+  <main slot="main">
     <p class="text-black dark:text-white">portfolio</p>
   </main>
 </Layout>

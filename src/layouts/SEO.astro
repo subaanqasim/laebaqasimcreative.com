@@ -1,0 +1,55 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  ogType?: string;
+  canonicalPath?: string;
+}
+
+const { title, description, ogType, canonicalPath } = Astro.props;
+
+const environment = import.meta.env.PUBLIC_VERCEL_ENV;
+
+let canonical: URL;
+if (environment === "production") {
+  canonical = canonicalPath
+    ? new URL(`/${canonicalPath}`, Astro.site)
+    : new URL(Astro.url.pathname, Astro.site);
+} else {
+  canonical = canonicalPath
+    ? new URL(`/${canonicalPath}`, Astro.url)
+    : new URL(Astro.url.pathname, Astro.url);
+}
+
+const fullTitle = `${title} | Laeba Qasim Creative`;
+
+const descriptionWithFallback =
+  description ??
+  "Unlimited, bespoke photography that scales with your business needs";
+
+const ogImage = new URL("/og-image.jpg", Astro.url);
+const ogImageAlt =
+  "Laeba Qasim Creative - Unlimited bespoke photography on demand";
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={descriptionWithFallback} />
+{canonical ? <link rel="canonical" href={canonical} /> : null}
+
+<meta
+  name="robots"
+  content={environment === "production" ? "index, follow" : "noindex nofollow"}
+/>
+
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={descriptionWithFallback} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={ogImageAlt} />
+<meta property="og:type" content={ogType ?? "website"} />
+<meta property="og:locale" content="en_GB" />
+
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={descriptionWithFallback} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
