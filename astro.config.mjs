@@ -23,6 +23,7 @@ export default defineConfig({
   publicDir: "./public",
   adapter: vercel({
     imageService: true,
+    analytics: true,
   }),
   experimental: {
     assets: true,
