@@ -21,10 +21,12 @@ const tiers = [
     },
     description: "The essentials to provide your best work for clients.",
     features: [
+      "Up to 5 photos in one project",
       "Unlimited requests",
       "Unlimited brands",
       "Unlimited users",
-      "Up to 5 photos in one project",
+      "Licensing included",
+      "Super simple billing",
     ],
     mostPopular: false,
   },
@@ -43,10 +45,12 @@ const tiers = [
     },
     description: "A plan that scales with your rapidly growing business.",
     features: [
+      "Up to 15 photos in one project",
       "Unlimited requests",
       "Unlimited brands",
       "Unlimited users",
-      "Up to 15 photos in one project",
+      "Licensing included",
+      "Super simple billing",
     ],
     mostPopular: true,
   },
@@ -65,10 +69,12 @@ const tiers = [
     },
     description: "Dedicated support and infrastructure for your company.",
     features: [
+      "Up to 30 photos in one project",
       "Unlimited requests",
       "Unlimited brands",
       "Unlimited users",
-      "Up to 30 photos in one project",
+      "Licensing included",
+      "Super simple billing",
     ],
     mostPopular: false,
   },
@@ -198,8 +204,11 @@ export function PricingSection() {
                   role="list"
                   className="mt-8 space-y-3 text-sm leading-6 text-gray-700 dark:text-gray-300 xl:mt-10"
                 >
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex gap-x-3">
+                  {tier.features.map((feature, i) => (
+                    <li
+                      key={feature}
+                      className={cn("flex gap-x-3", i === 0 ? "font-bold" : "")}
+                    >
                       <CheckIcon
                         className="h-6 w-5 flex-none text-gray-950 dark:text-gray-50"
                         aria-hidden="true"
@@ -207,15 +216,15 @@ export function PricingSection() {
                       {feature}
                     </li>
                   ))}
-                  {activePeriod === "monthly" ? (
-                    <li className="flex gap-x-3">
-                      <CheckIcon
-                        className="h-6 w-5 flex-none text-gray-950 dark:text-gray-50"
-                        aria-hidden="true"
-                      />
-                      Pause or cancel anytime
-                    </li>
-                  ) : null}
+                  <li className="flex gap-x-3">
+                    <CheckIcon
+                      className="h-6 w-5 flex-none text-gray-950 dark:text-gray-50"
+                      aria-hidden="true"
+                    />
+                    {activePeriod === "monthly"
+                      ? "Pause or cancel anytime"
+                      : "Pause anytime"}
+                  </li>
                 </ul>
               </div>
             ))}
