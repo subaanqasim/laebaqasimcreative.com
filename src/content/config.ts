@@ -6,10 +6,10 @@ const portfolioCollection = defineCollection({
     z.object({
       title: z.string(),
       image: image(),
-      tags: z.array(z.string()).optional(),
+      tags: z.array(z.string()).nullable(),
       // In frontmatter, dates written **without** quotes around them are interpreted as Date objects e.g. 2023-07-29
       publishDate: z.date(),
-      relatedPhotos: z.array(reference("portfolio")).optional(),
+      relatedPhotos: z.array(reference("portfolio")).nullable(),
     }),
 });
 

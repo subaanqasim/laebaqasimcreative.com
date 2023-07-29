@@ -1,12 +1,38 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+import { Container } from "@components/ui";
+
 import Layout from "../layouts/BaseLayout.astro";
 import SEO from "../layouts/SEO.astro";
+
+const allPhotos = await getCollection("portfolio");
 ---
 
 <Layout>
   <SEO slot="seo" title="Portfolio" />
 
-  <main slot="main">
-    <p class="text-black dark:text-white">portfolio</p>
+  <main slot="main" class="mt-48 mb-24">
+    <Container>
+      <div class="columns-3 gap-6">
+        {
+          allPhotos.map((photo) => (
+            <div class="mb-6 hover:scale-105 transition-transform">
+              <a href={`/portfolio/${photo.slug}`} class="relative ">
+                <div class="pointer-events-auto absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10" />
+
+                <Image
+                  src={photo.data.image}
+                  alt={photo.data.title}
+                  quality={70}
+                  class="rounded-xl bg-gray-900/5 object-cover shadow-lg dark:shadow-white/10"
+                />
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
   </main>
 </Layout>
