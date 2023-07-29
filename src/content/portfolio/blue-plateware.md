@@ -5,3 +5,4 @@ tags: ["food"]
 publishDate: 2023-07-29
 relatedPhotos:
 ---
+# Blue Plateware
