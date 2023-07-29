@@ -200,9 +200,21 @@ export function PricingSection() {
                 >
                   Buy plan
                 </Button>
+
+                <div className="flex justify-center">
+                  <Button
+                    as="a"
+                    variant="link"
+                    href="https://cal.com/laebaqasimcreative/30min"
+                    className="decoration-dotted underline dark:text-gray-400 text-gray-500 text-xs"
+                  >
+                    Book a call
+                  </Button>
+                </div>
+
                 <ul
                   role="list"
-                  className="mt-8 space-y-3 text-sm leading-6 text-gray-700 dark:text-gray-300 xl:mt-10"
+                  className="mt-6 space-y-3 text-sm leading-6 text-gray-700 dark:text-gray-300 xl:mt-8"
                 >
                   {tier.features.map((feature, i) => (
                     <li
