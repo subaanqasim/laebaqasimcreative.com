@@ -60,4 +60,36 @@ const AccordionContent = React.forwardRef<
 ));
 AccordionContent.displayName = "AccordionContent";
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+type AccordionContentFAQProps = React.ForwardRefExoticComponent<
+  AccordionPrimitive.AccordionContentProps &
+    React.RefAttributes<HTMLDivElement> & { html: string }
+>;
+
+const AccordionContentFAQ = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<AccordionContentFAQProps>
+>(({ className, html, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className={cn(
+      "data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden dark:text-gray-400 text-gray-700 text-sm md:text-base transition-all",
+      className,
+    )}
+    {...props}
+  >
+    <div
+      className="pt-0 pb-4 space-y-4"
+      style={{ whiteSpace: "pre-line" }}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  </AccordionPrimitive.Content>
+));
+AccordionContent.displayName = "AccordionContentFAQ";
+
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionContentFAQ,
+};

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import {
   Accordion,
-  AccordionContent,
+  AccordionContentFAQ,
   AccordionItem,
   AccordionTrigger,
 } from "@components/ui";
@@ -31,9 +31,10 @@ export function FaqList({ faqs }: FaqListProps) {
                 {faq.question}
               </dt>
               <dd className="mt-4 lg:col-span-7 lg:mt-0">
-                <p className="text-base leading-7 text-gray-700 dark:text-gray-400">
-                  {faq.answer}
-                </p>
+                <div
+                  className="text-base leading-7 text-gray-700 dark:text-gray-400"
+                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                />
               </dd>
             </div>
           ))}
@@ -47,7 +48,7 @@ export function FaqList({ faqs }: FaqListProps) {
       {faqs.map((faq) => (
         <AccordionItem key={faq.question} value={faq.question}>
           <AccordionTrigger>{faq.question}</AccordionTrigger>
-          <AccordionContent>{faq.answer}</AccordionContent>
+          <AccordionContentFAQ html={faq.answer} />
         </AccordionItem>
       ))}
     </Accordion>
