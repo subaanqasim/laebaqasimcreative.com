@@ -13,6 +13,16 @@ const portfolioCollection = defineCollection({
     }),
 });
 
+const termsCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    publishDate: z.date(),
+    lastUpdated: z.date(),
+  }),
+});
+
 export const collections = {
   portfolio: portfolioCollection,
+  terms: termsCollection,
 };

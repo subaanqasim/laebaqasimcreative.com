@@ -1,0 +1,36 @@
+---
+import { getEntry } from "astro:content";
+
+import { Container } from "@components/ui";
+
+import Layout from "../layouts/BaseLayout.astro";
+import SEO from "../layouts/SEO.astro";
+
+const terms = await getEntry("terms", "terms");
+
+const { Content } = await terms.render();
+---
+
+<Layout>
+  <SEO
+    slot="seo"
+    title="Terms of Service & Usage"
+    description="See the terms of my services and usage rights for your images."
+  />
+
+  <main slot="main" class="mt-48 mb-24 mx-auto prose dark:prose-invert">
+    <Container>
+      <p class="text-sm dark:text-gray-400 text-gray-600">
+        Last updated: {
+          terms.data.lastUpdated.toLocaleDateString("en-GB", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })
+        }
+      </p>
+      <Content />
+    </Container>
+  </main>
+</Layout>
